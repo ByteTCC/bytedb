@@ -14,11 +14,11 @@ Para MySQL
 
 ### Todo:
 
-- [*] Adicionar tabelas principais
-- [] Adicionar procedures
-- [] Converter procedures de Select em [views](https://dev.mysql.com/doc/refman/8.4/en/view-syntax.html)
-- [] Adicionar procedure de teste para inserir, apagar e consultar dados.
-- [] Adicionar script para teste de banco de dados.
+- [x] Adicionar tabelas principais
+- [ ] Adicionar procedures
+- [ ] Converter procedures de Select em [views](https://dev.mysql.com/doc/refman/8.4/en/view-syntax.html)
+- [ ] Adicionar procedure de teste para inserir, apagar e consultar dados.
+- [ ] Adicionar script para teste de banco de dados.
 
 ### O que fazer antes de usar?
 
