@@ -21,7 +21,7 @@ Tabela de posts da rede social byte
 | id_post | INT UNSIGNED | Chave primária | Não |
 | postTitle | varchar(300) | Título do post | Não |
 | postText | varchar(300) | Conteúdo do post | Não |
-| postPhoto | varchar(300) | Foto do post | Não |
+| postPhoto | varchar(300) | Foto do post | Sim |
 | postDescription | varchar(512) | Descrição do post | Não |
 | postCode | varchar(300) | Código fonte inserído no post | Não |
 | fk_idUser | INT UNSIGNED | Chave estrangeira para a tabela tb_user | Não |
@@ -57,5 +57,5 @@ Tabela de comentários da rede social byte
 | fk_idUser | INT UNSIGNED | Chave estrangeira para a tabela tb_user | Não |
 | fk_id_post | INT UNSIGNED | Chave estrangeira para a tabela post | Não |
 | textComent | varchar(300) | Texto do comentário | Não |
-| imageComent | varchar(300) | Imagem do comentário | Não |
+| imageComent | varchar(300) | Imagem do comentário | Sim |
 | codeComent | varchar(3000) | Código fonte contido no comentário | Não |
