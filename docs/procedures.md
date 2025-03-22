@@ -15,8 +15,18 @@
 | sp_mudarFotoPerfil | Modifica a foto de perfil de um usuário (banner) | id, foto_perfil |
 | sp_mudarFotoUsuario | Modifica a foto de perfil de um usuário | id, userPhoto_ |
 | sp_mudarBio | Modifica a bio de um usuário | id, bio_ |
-
+| sp_editarPost | Edita um post | idPost, title, text_, photo, description_, code, idUser |
 
 ### Procedures de consulta de registros no banco de dados (SELECT):
+| Nome da procedure | Descrição | Dados de entrada |
+| ----------------- | --------- | ---------------- |
+
 
 ### Procedures de exclusão de registros no banco de dados (DELETE):
+| Nome da procedure | Descrição | Dados de entrada |
+| ----------------- | --------- | ---------------- |
+| sp_removerLike | Remove um like | idPost, idUser |
+| sp_removerPostUser | Remove um post (usuário apagando posts próprios) | idPost, idUser |
+| sp_removerPostAdmin | Remove um post (admin apagando qualquer post) | idPost, idAdmin |
+| sp_removerComentarioUser | Remove um comentário (usuário apagando comentários próprios) | idComentario, idUser |
+| sp_removerComentarioAdmin | Remove um comentário (admin apagando qualquer comentário) | idComentario, idAdmin |
