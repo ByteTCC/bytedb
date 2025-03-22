@@ -302,14 +302,22 @@ BEGIN
 END @@
 DELIMITER ;
 
+-- view para mostrar os posts:
+create view posts_search as
+SELECT userName, email, userPhoto, vocation FROM post
+  WHERE postTitle LIKE CONCAT('%', pesquisa, '%') OR postDescription LIKE CONCAT('%', pesquisa, '%') OR postCode LIKE CONCAT('%', pesquisa, '%')
+  ORDER BY id_post;
+
 -- listar posts COM TAGS de acordo com pesquisa de titulo, descrição ou código:
 DELIMITER @@
 CREATE PROCEDURE sp_listarPostsPorPesquisa(
   IN pesquisa VARCHAR(300)
 )
 BEGIN
-  SELECT * FROM post
-  WHERE postTitle LIKE CONCAT('%', pesquisa, '%') OR postDescription LIKE CONCAT('%', pesquisa, '%') OR postCode LIKE CONCAT('%', pesquisa, '%')
+  SELECT post.postTitle, post.postTitle, post.postText, post.postPhoto, post.postDescription, tb_user.userName, tb_user.userPhoto, tb_user.vocation
+  FROM post
+  INNER JOIN tb_user ON post.fk_idUser = tb_user.idUser
+  WHERE post.postTitle LIKE CONCAT('%', pesquisa, '%') OR post.postDescription LIKE CONCAT('%', pesquisa, '%') OR post.postCode LIKE CONCAT('%', pesquisa, '%')
   ORDER BY id_post;
 END @@
 DELIMITER ;
