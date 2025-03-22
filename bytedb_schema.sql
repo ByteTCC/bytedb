@@ -292,7 +292,7 @@ DELIMITER ;
 
 -- mostrar numeros de likes de post:
 DELIMITER @@
-CREATE PROCEDURE (
+CREATE PROCEDURE sp_mostrarLikesPost (
   IN idPost INT UNSIGNED
 )
 BEGIN
