@@ -16,11 +16,12 @@
 | sp_mudarFotoUsuario | Modifica a foto de perfil de um usuário | id, userPhoto_ |
 | sp_mudarBio | Modifica a bio de um usuário | id, bio_ |
 | sp_editarPost | Edita um post | idPost, title, text_, photo, description_, code, idUser |
+| sp_editarComentario | Edita um comentário | idComentario, text_, photo_, code, idUser |
 
 ### Procedures de consulta de registros no banco de dados (SELECT):
 | Nome da procedure | Descrição | Dados de entrada |
 | ----------------- | --------- | ---------------- |
-
+| sp_mostrarLikesPost | Mostra os likes de um post | idPost |
 
 ### Procedures de exclusão de registros no banco de dados (DELETE):
 | Nome da procedure | Descrição | Dados de entrada |
