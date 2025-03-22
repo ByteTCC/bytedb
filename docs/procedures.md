@@ -22,6 +22,16 @@
 | Nome da procedure | Descrição | Dados de entrada | Completo/Funcionando? |
 | ----------------- | --------- | ---------------- | --------------------- |
 | sp_mostrarLikesPost | Mostra os likes de um post | idPost | Sim |
+| sp_ListarPostsPorTags | Mostra os posts de acordo com TAGS | tagName | Não |
+| sp_ListarPostsPorTagsEConteudo | Mostra os posts de acordo com TAGS e CONTEÚDO | tags, searchTerm | Não |
+| sp_listarUsuarios | Mostra todos os usuários ordenados de acordo com o id |  | Sim mas falta uns ajustes |
+| sp_listarUsuariosLimit | Mostra todos os usuários ordenados de acordo com o id e limita os resultados | limit_ | Sim mas falta uns ajustes |
+| sp_listarUsuariosPorNome | Mostra todos os usuários ordenados de acordo com o nome | nome | Sim mas falta uns ajustes |
+| sp_verificarAdmin | Verifica se um usuário é admin | idUser | Sim |
+| sp_listarTags | Retorna lista de tags com id e nome da tag |  | Sim |
+| sp_obterIdUsuarioPorNome | Retorna o id de um usuário a partir do username | nome | Sim |
+| sp_obterPostPorId | retorna um post com base em seu id, retorando o id do usuário que postou, o username, a foto do usuário, a foto do post, o titulo, o texto, a descrição, o código, o número de likes e o número de comentários | idPost | Sim mas falta testar |
+| sp_obterComentariosPorIdPostLimit | Retorna uma lista de comentários com base em seu idPost, limitando os resultados | idPost, limit_ | Sim mas falta testar |
 
 ### Procedures de exclusão de registros no banco de dados (DELETE):
 | Nome da procedure | Descrição | Dados de entrada | Completo/Funcionando? |
@@ -31,3 +41,6 @@
 | sp_removerPostAdmin | Remove um post (admin apagando qualquer post) | idPost, idAdmin | Sim |
 | sp_removerComentarioUser | Remove um comentário (usuário apagando comentários próprios) | idComentario, idUser | Sim |
 | sp_removerComentarioAdmin | Remove um comentário (admin apagando qualquer comentário) | idComentario, idAdmin | Sim |
+| sp_removerUsuario | Remove um usuário, para admins | idUserRemover, idUserAdmin | Sim |
+| sp_removerPermissaoAdmin | Remove permissão de admin de um usuário | idUser | Sim |
+| sp_darPermissaoAdmin | Dá permissão de admin a um usuário | idUser | Sim |
