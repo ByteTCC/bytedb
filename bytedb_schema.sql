@@ -337,9 +337,9 @@ SELECT
     JOIN tb_user u ON p.fk_idUser = u.idUser
     JOIN post_tag pt ON p.id_post = pt.fk_id_post
     JOIN tag t ON pt.fk_tagName = t.id_tag
-    WHERE p.postTitle LIKE CONCAT(pesquisa, '%')
-    OR p.postText LIKE CONCAT(pesquisa, '%')
-    OR p.postDescription LIKE CONCAT(pesquisa, '%')
+    WHERE p.postTitle LIKE CONCAT('%', pesquisa, '%')
+    OR p.postText LIKE CONCAT('%', pesquisa, '%')
+    OR p.postDescription LIKE CONCAT('%', pesquisa, '%')
     GROUP BY p.id_post;
 END @@
 DELIMITER ;
@@ -409,7 +409,7 @@ BEGIN
     JOIN tag t ON pt.fk_tagName = t.id_tag
     WHERE (t.tagName IN (';
     
-    SET sql_query = CONCAT(sql_query, tags, ') OR (p.postTitle LIKE ', searchTerm, '%'' OR p.postText LIKE ', searchTerm, '%'')) GROUP BY p.id_post');
+    SET sql_query = CONCAT(sql_query, tags, ') OR (p.postTitle LIKE ''%', searchTerm, '%'' OR p.postText LIKE ''%', searchTerm, '%'')) GROUP BY p.id_post');
     
     PREPARE stmt FROM sql_query;
     EXECUTE stmt;
