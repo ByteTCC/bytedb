@@ -329,7 +329,7 @@ SELECT
     u.idUser AS id_usuario, 
     u.userPhoto AS foto_usuario, 
     p.postPhoto AS foto_post, 
-    JSON_ARRAYAGG(t.tagName) AS tags,
+    GROUP_CONCAT(t.tagName SEPARATOR ', ') AS tags,
     p.postDateTime AS pDateTime,
     (SELECT COUNT(*) FROM likes WHERE fk_likePost = p.id_post) AS quantLikes,
     (SELECT COUNT(*) FROM comentarios WHERE fk_id_post = p.id_post) AS quantComentarios
@@ -362,7 +362,7 @@ BEGIN
          u.idUser AS id_usuario, 
          u.userPhoto AS foto_usuario, 
          p.postPhoto AS foto_post, 
-         JSON_ARRAYAGG(t.tagName) AS tags,
+         GROUP_CONCAT(t.tagName SEPARATOR ', ') AS tags,
          p.postDateTime AS pDateTime,
             (SELECT COUNT(*) FROM likes WHERE fk_likePost = p.id_post) AS quantLikes,
             (SELECT COUNT(*) FROM comentarios WHERE fk_id_post = p.id_post) AS quantComentarios
@@ -399,7 +399,7 @@ BEGIN
          u.idUser AS id_usuario, 
          u.userPhoto AS foto_usuario, 
          p.postPhoto AS foto_post, 
-         JSON_ARRAYAGG(t.tagName) AS tags,
+         GROUP_CONCAT(t.tagName SEPARATOR \', \') AS tags,
          p.postDateTime AS pDateTime,
           (SELECT COUNT(*) FROM likes WHERE fk_likePost = p.id_post) AS quantLikes,
           (SELECT COUNT(*) FROM comentarios WHERE fk_id_post = p.id_post) AS quantComentarios
