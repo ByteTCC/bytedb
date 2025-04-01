@@ -304,16 +304,41 @@ END @@
 DELIMITER ;
 
 -- listar posts COM TAGS de acordo com pesquisa de titulo, descrição ou código:
+-- DELIMITER @@
+-- CREATE PROCEDURE sp_listarPostsPorPesquisa(
+--   IN pesquisa VARCHAR(1000)
+-- )
+-- BEGIN
+--   SELECT post.postTitle, post.postTitle, post.postText, post.postPhoto, post.postDescription, post.postDateTime, tb_user.userName, tb_user.userPhoto, tb_user.vocation
+--   FROM post
+--   INNER JOIN tb_user ON post.fk_idUser = tb_user.idUser
+--   WHERE post.postTitle LIKE CONCAT('%', pesquisa, '%') OR post.postDescription LIKE CONCAT('%', pesquisa, '%') OR post.postCode LIKE CONCAT('%', pesquisa, '%')
+--   ORDER BY post.postDateTime;
+-- END @@
+-- DELIMITER ;
+
+
+-- listas posts com tags considerando conteudo do titulo, descrição ou texto do post
 DELIMITER @@
-CREATE PROCEDURE sp_listarPostsPorPesquisa(
-  IN pesquisa VARCHAR(300)
-)
+CREATE PROCEDURE sp_listarPostPesquisa(IN pesquisa VARCHAR(1000))
 BEGIN
-  SELECT post.postTitle, post.postTitle, post.postText, post.postPhoto, post.postDescription, post.postDateTime, tb_user.userName, tb_user.userPhoto, tb_user.vocation
-  FROM post
-  INNER JOIN tb_user ON post.fk_idUser = tb_user.idUser
-  WHERE post.postTitle LIKE CONCAT('%', pesquisa, '%') OR post.postDescription LIKE CONCAT('%', pesquisa, '%') OR post.postCode LIKE CONCAT('%', pesquisa, '%')
-  ORDER BY post.postDateTime;
+SELECT 
+    p.postTitle AS titulo, 
+    SUBSTRING(p.postText, 1, 100) AS resumo, 
+    u.userName AS nome_usuario, 
+    u.idUser AS id_usuario, 
+    u.userPhoto AS foto_usuario, 
+    p.postPhoto AS foto_post, 
+    JSON_ARRAYAGG(t.tagName) AS tags,
+    p.postDateTime AS pDateTime
+    FROM post p
+    JOIN tb_user u ON p.fk_idUser = u.idUser
+    JOIN post_tag pt ON p.id_post = pt.fk_id_post
+    JOIN tag t ON pt.fk_tagName = t.id_tag
+    WHERE p.postTitle LIKE CONCAT ('%', searchTerm, '%')
+    OR p.postText LIKE CONCAT('%', searchTerm, '%')
+    OR p.postDescription CONCAT('%', searchTerm, '%')
+    GROUP BY p.id_post;
 END @@
 DELIMITER ;
 
