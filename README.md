@@ -15,10 +15,8 @@ Para MySQL
 ### Todo:
 
 - [x] Adicionar tabelas principais
-- [ ] Adicionar procedures
-- [ ] Converter procedures de Select em [views](https://dev.mysql.com/doc/refman/8.4/en/view-syntax.html)
-- [ ] Adicionar procedure de teste para inserir, apagar e consultar dados.
-- [ ] Adicionar script para teste de banco de dados.
+- [x] Adicionar procedures
+- [x] Adicionar documentação atualizada de procedures e tabelas
 
 ### O que fazer antes de usar?
 
