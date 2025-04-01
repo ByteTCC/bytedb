@@ -25,6 +25,7 @@ Tabela de posts da rede social byte
 | postDescription | varchar(512) | Descrição do post | Não |
 | postCode | varchar(300) | Código fonte inserído no post | Não |
 | fk_idUser | INT UNSIGNED | Chave estrangeira para a tabela tb_user | Não |
+| postDateTime | DATETIME | Representa o dia e hora que o post foi feito | Não |
 
 ### tag
 Tabela de tags da rede social byte

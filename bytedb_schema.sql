@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS post (
   postDescription varchar(512) NOT NULL,
   postCode varchar(3000) NOT NULL,
   fk_idUser INT UNSIGNED not null,
+  postDateTime DATETIME,
   FOREIGN KEY (fk_idUser) REFERENCES tb_user(idUser),
   PRIMARY KEY (id_post)
 );
@@ -302,23 +303,17 @@ BEGIN
 END @@
 DELIMITER ;
 
--- view para mostrar os posts:
-create view posts_search as
-SELECT userName, email, userPhoto, vocation FROM post
-  WHERE postTitle LIKE CONCAT('%', pesquisa, '%') OR postDescription LIKE CONCAT('%', pesquisa, '%') OR postCode LIKE CONCAT('%', pesquisa, '%')
-  ORDER BY id_post;
-
 -- listar posts COM TAGS de acordo com pesquisa de titulo, descrição ou código:
 DELIMITER @@
 CREATE PROCEDURE sp_listarPostsPorPesquisa(
   IN pesquisa VARCHAR(300)
 )
 BEGIN
-  SELECT post.postTitle, post.postTitle, post.postText, post.postPhoto, post.postDescription, tb_user.userName, tb_user.userPhoto, tb_user.vocation
+  SELECT post.postTitle, post.postTitle, post.postText, post.postPhoto, post.postDescription, post.postDateTime, tb_user.userName, tb_user.userPhoto, tb_user.vocation
   FROM post
   INNER JOIN tb_user ON post.fk_idUser = tb_user.idUser
   WHERE post.postTitle LIKE CONCAT('%', pesquisa, '%') OR post.postDescription LIKE CONCAT('%', pesquisa, '%') OR post.postCode LIKE CONCAT('%', pesquisa, '%')
-  ORDER BY id_post;
+  ORDER BY post.postDateTime;
 END @@
 DELIMITER ;
 
@@ -340,7 +335,8 @@ BEGIN
          u.idUser AS id_usuario, 
          u.userPhoto AS foto_usuario, 
          p.postPhoto AS foto_post, 
-         JSON_ARRAYAGG(t.tagName) AS tags
+         JSON_ARRAYAGG(t.tagName) AS tags,
+         p.postDateTime AS pDateTime
     FROM post p
     JOIN tb_user u ON p.fk_idUser = u.idUser
     JOIN post_tag pt ON p.id_post = pt.fk_id_post
@@ -374,7 +370,8 @@ BEGIN
          u.idUser AS id_usuario, 
          u.userPhoto AS foto_usuario, 
          p.postPhoto AS foto_post, 
-         JSON_ARRAYAGG(t.tagName) AS tags
+         JSON_ARRAYAGG(t.tagName) AS tags,
+         p.postDateTime AS pDateTime
     FROM post p
     JOIN tb_user u ON p.fk_idUser = u.idUser
     JOIN post_tag pt ON p.id_post = pt.fk_id_post
