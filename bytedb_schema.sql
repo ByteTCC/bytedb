@@ -330,7 +330,9 @@ SELECT
     u.userPhoto AS foto_usuario, 
     p.postPhoto AS foto_post, 
     JSON_ARRAYAGG(t.tagName) AS tags,
-    p.postDateTime AS pDateTime
+    p.postDateTime AS pDateTime,
+    (SELECT COUNT(*) FROM likes WHERE fk_likePost = p.id_post) AS quantLikes,
+    (SELECT COUNT(*) FROM comentarios WHERE fk_id_post = p.id_post) AS quantComentarios
     FROM post p
     JOIN tb_user u ON p.fk_idUser = u.idUser
     JOIN post_tag pt ON p.id_post = pt.fk_id_post
@@ -361,7 +363,9 @@ BEGIN
          u.userPhoto AS foto_usuario, 
          p.postPhoto AS foto_post, 
          JSON_ARRAYAGG(t.tagName) AS tags,
-         p.postDateTime AS pDateTime
+         p.postDateTime AS pDateTime,
+            (SELECT COUNT(*) FROM likes WHERE fk_likePost = p.id_post) AS quantLikes,
+            (SELECT COUNT(*) FROM comentarios WHERE fk_id_post = p.id_post) AS quantComentarios
     FROM post p
     JOIN tb_user u ON p.fk_idUser = u.idUser
     JOIN post_tag pt ON p.id_post = pt.fk_id_post
@@ -396,7 +400,9 @@ BEGIN
          u.userPhoto AS foto_usuario, 
          p.postPhoto AS foto_post, 
          JSON_ARRAYAGG(t.tagName) AS tags,
-         p.postDateTime AS pDateTime
+         p.postDateTime AS pDateTime,
+          (SELECT COUNT(*) FROM likes WHERE fk_likePost = p.id_post) AS quantLikes,
+          (SELECT COUNT(*) FROM comentarios WHERE fk_id_post = p.id_post) AS quantComentarios
     FROM post p
     JOIN tb_user u ON p.fk_idUser = u.idUser
     JOIN post_tag pt ON p.id_post = pt.fk_id_post
