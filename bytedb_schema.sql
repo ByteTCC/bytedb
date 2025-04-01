@@ -439,7 +439,7 @@ DELIMITER ;
 DELIMITER @@
 CREATE PROCEDURE sp_listarUsuariosPorNome(IN nome VARCHAR(300))
 BEGIN
-  SELECT username, userPhoto, profileImg, vocation, bio FROM tb_user WHERE userName LIKE CONCAT(nome, '%') ORDER BY ASC;
+  SELECT username, userPhoto, profileImg, vocation, bio FROM tb_user WHERE userName LIKE CONCAT(nome, '%') ORDER BY idUser ASC;
 END @@
 DELIMITER ;
 
