@@ -339,7 +339,7 @@ SELECT
     JOIN tag t ON pt.fk_tagName = t.id_tag
     WHERE p.postTitle LIKE CONCAT(pesquisa, '%')
     OR p.postText LIKE CONCAT(pesquisa, '%')
-    OR p.postDescription CONCAT(pesquisa, '%')
+    OR p.postDescription LIKE CONCAT(pesquisa, '%')
     GROUP BY p.id_post;
 END @@
 DELIMITER ;
