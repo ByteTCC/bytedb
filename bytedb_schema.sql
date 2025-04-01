@@ -151,8 +151,8 @@ CREATE PROCEDURE sp_adicionarPost(
   IN idUser INT UNSIGNED
 )
 BEGIN
-  INSERT INTO post (postTitle, postText, postPhoto, postDescription, postCode, fk_idUser)
-  VALUES (title, text_, photo, description_, code, idUser);
+  INSERT INTO post (postTitle, postText, postPhoto, postDescription, postCode, fk_idUser, postDateTime)
+  VALUES (title, text_, photo, description_, code, idUser, NOW());
 END @@
 DELIMITER ;
 
