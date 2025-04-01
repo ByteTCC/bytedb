@@ -24,9 +24,9 @@
 | sp_mostrarLikesPost | Mostra os likes de um post | idPost | Sim |
 | sp_ListarPostsPorTags | Mostra os posts de acordo com TAGS | tagName | Não |
 | sp_ListarPostsPorTagsEConteudo | Mostra os posts de acordo com TAGS e CONTEÚDO | tags, searchTerm | Não |
-| sp_listarUsuarios | Mostra todos os usuários ordenados de acordo com o id |  | Sim mas falta uns ajustes |
-| sp_listarUsuariosLimit | Mostra todos os usuários ordenados de acordo com o id e limita os resultados | limit_ | Sim mas falta uns ajustes |
-| sp_listarUsuariosPorNome | Mostra todos os usuários ordenados de acordo com o nome | nome | Sim mas falta uns ajustes |
+| sp_listarUsuarios | Mostra todos os usuários ordenados de acordo com o id |  | Sim |
+| sp_listarUsuariosLimit | Mostra todos os usuários ordenados de acordo com o id e limita os resultados | limit_ | Sim |
+| sp_listarUsuariosPorNome | Mostra todos os usuários ordenados de acordo com o nome | nome | Sim |
 | sp_verificarAdmin | Verifica se um usuário é admin | idUser | Sim |
 | sp_listarTags | Retorna lista de tags com id e nome da tag |  | Sim |
 | sp_obterIdUsuarioPorNome | Retorna o id de um usuário a partir do username | nome | Sim |

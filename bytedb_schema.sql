@@ -417,7 +417,7 @@ DELIMITER ;
 DELIMITER @@
 CREATE PROCEDURE sp_listarUsuarios()
 BEGIN
-  SELECT * FROM tb_user ORDER BY idUser;
+  SELECT username, userPhoto, profileImg, vocation, bio FROM tb_user ORDER BY idUser;
 END @@
 DELIMITER ;
 
@@ -425,7 +425,7 @@ DELIMITER ;
 DELIMITER @@
 CREATE PROCEDURE sp_listarUsuariosLimit(IN limit_ INT UNSIGNED)
 BEGIN
-  SELECT * FROM tb_user ORDER BY idUser LIMIT limit_;
+    SELECT username, userPhoto, profileImg, vocation, bio FROM tb_user ORDER BY idUser LIMIT limit_;
 END @@
 DELIMITER ;
 
@@ -433,7 +433,7 @@ DELIMITER ;
 DELIMITER @@
 CREATE PROCEDURE sp_listarUsuariosPorNome(IN nome VARCHAR(300))
 BEGIN
-  SELECT * FROM tb_user WHERE userName LIKE CONCAT(nome, '%');
+  SELECT username, userPhoto, profileImg, vocation, bio FROM tb_user WHERE userName LIKE CONCAT(nome, '%') ORDER BY ASC;
 END @@
 DELIMITER ;
 
