@@ -18,7 +18,7 @@ Para MySQL
 - [x] Adicionar procedures
 - [x] Adicionar documentação atualizada de procedures e tabelas
 
-### O que fazer antes de usar?
+### O que fazer caso o PHPMyAdmin dar um erro ao tentar inserir o SQL?
 
 #### modifique os seguintes valores do php.ini:
 
