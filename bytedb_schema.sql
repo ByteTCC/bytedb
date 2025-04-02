@@ -84,9 +84,9 @@ CREATE TABLE IF NOT EXISTS comentarios (
 );
 
 CREATE TABLE IF NOT EXISTS follower (
-  idSeguidor int NOT NULL AUTO_INCREMENT,
-  fk_user_perfil int NOT NULL,
-  fk_user_seguidor int NOT NULL,
+  idSeguidor int UNSIGNED NOT NULL AUTO_INCREMENT,
+  fk_user_perfil int UNSIGNED NOT NULL,
+  fk_user_seguidor int UNSIGNED NOT NULL,
   PRIMARY KEY (idSeguidor),
   FOREIGN KEY (fk_user_perfil) REFERENCES tb_user(idUser),
   FOREIGN KEY (fk_user_seguidor) REFERENCES tb_user(idUser)
