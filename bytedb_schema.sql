@@ -457,7 +457,8 @@ DELIMITER ;
 DELIMITER @@
 CREATE PROCEDURE sp_listarUsuarios()
 BEGIN
-  SELECT username, userPhoto, profileImg, vocation, bio FROM tb_user ORDER BY idUser;
+  SELECT username, userPhoto, profileImg, vocation, bio, (SELECT COUNT(*) FROM follower WHERE fk_user_perfil = tb_user.idUser)
+  FROM tb_user ORDER BY idUser;
 END @@
 DELIMITER ;
 
@@ -465,7 +466,8 @@ DELIMITER ;
 DELIMITER @@
 CREATE PROCEDURE sp_listarUsuariosLimit(IN limit_ INT UNSIGNED)
 BEGIN
-    SELECT username, userPhoto, profileImg, vocation, bio FROM tb_user ORDER BY idUser LIMIT limit_;
+    SELECT username, userPhoto, profileImg, vocation, bio, (SELECT COUNT(*) FROM follower WHERE fk_user_perfil = tb_user.idUser)
+     FROM tb_user ORDER BY idUser LIMIT limit_;
 END @@
 DELIMITER ;
 
@@ -473,7 +475,8 @@ DELIMITER ;
 DELIMITER @@
 CREATE PROCEDURE sp_listarUsuariosPorNome(IN nome VARCHAR(300))
 BEGIN
-  SELECT username, userPhoto, profileImg, vocation, bio FROM tb_user WHERE userName LIKE CONCAT(nome, '%') ORDER BY idUser ASC;
+  SELECT username, userPhoto, profileImg, vocation, bio, (SELECT COUNT(*) FROM follower WHERE fk_user_perfil = tb_user.idUser)
+   FROM tb_user WHERE userName LIKE CONCAT(nome, '%') ORDER BY idUser ASC;
 END @@
 DELIMITER ;
 
