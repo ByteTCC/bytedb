@@ -83,8 +83,42 @@ CREATE TABLE IF NOT EXISTS comentarios (
   FOREIGN KEY (fk_idUser) REFERENCES tb_user(idUser)
 );
 
+CREATE TABLE IF NOT EXISTS follower (
+  idSeguidor int NOT NULL AUTO_INCREMENT,
+  fk_user_perfil int NOT NULL,
+  fk_user_seguidor int NOT NULL,
+  PRIMARY KEY (idSeguidor),
+  FOREIGN KEY (fk_user_perfil) REFERENCES tb_user(idUser),
+  FOREIGN KEY (fk_user_seguidor) REFERENCES tb_user(idUser)
+);
+
 -- STORED PROCEDURES para as ações do backend:
 -- (os underlines a mais são pra diferenciar o nome das colunas das variáveis dos procedures)
+
+-- seguir perfil:
+DELIMITER @@
+CREATE PROCEDURE sp_seguirUsuario(
+  IN id_perfil INT NOT NULL,
+  IN id_seguidor INT NOT NULL
+)
+BEGIN
+  INSERT INTO follower (fk_user_perfil, fk_user_seguidor)
+  VALUES (id_perfil, id_seguidor);
+END @@
+DELIMITER ;
+
+-- deixar de seguir usuário
+DELIMITER @@
+CREATE PROCEDURE sp_deixarSeguirUsuario(
+  IN id_perfil INT NOT NULL,
+  IN id_seguidor INT NOT NULL
+)
+BEGIN
+  DELETE FROM follower 
+  WHERE fk_user_perfil = id_perfil 
+  AND fk_user_seguidor = id_seguidor;
+END @@
+DELIMITER ;
 
 -- criação de usuário
 DELIMITER @@

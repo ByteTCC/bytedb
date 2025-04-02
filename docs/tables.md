@@ -27,6 +27,13 @@ Tabela de posts da rede social byte
 | fk_idUser | INT UNSIGNED | Chave estrangeira para a tabela tb_user | Não |
 | postDateTime | DATETIME | Representa o dia e hora que o post foi feito | Não |
 
+### follower
+Tabela de seguidores (novo)
+| Coluna | Tipo | Descrição | Pode ser nulo? |
+| ------ | ---- | --------- | -------------- |
+| idSeguidor | int UNSIGNED | Chave primária | Não |
+| fk_user_perfil | int UNSIGNED | id do usuário que vai ser seguido | Não |
+| fk_user_seguidor | int UNSIGNED | id do usuário que vai seguir | Não |
 ### tag
 Tabela de tags da rede social byte
 | Coluna | Tipo | Descrição | Pode ser nulo? |
