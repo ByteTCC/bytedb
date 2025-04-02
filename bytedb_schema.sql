@@ -98,8 +98,8 @@ CREATE TABLE IF NOT EXISTS follower (
 -- seguir perfil:
 DELIMITER @@
 CREATE PROCEDURE sp_seguirUsuario(
-  IN id_perfil INT NOT NULL,
-  IN id_seguidor INT NOT NULL
+  IN id_perfil UNSIGNED INT NOT NULL,
+  IN id_seguidor UNSIGNED INT NOT NULL
 )
 BEGIN
   INSERT INTO follower (fk_user_perfil, fk_user_seguidor)
@@ -110,8 +110,8 @@ DELIMITER ;
 -- deixar de seguir usuário
 DELIMITER @@
 CREATE PROCEDURE sp_deixarSeguirUsuario(
-  IN id_perfil INT NOT NULL,
-  IN id_seguidor INT NOT NULL
+  IN id_perfil INT UNSIGNED NOT NULL,
+  IN id_seguidor INT UNSIGNED NOT NULL
 )
 BEGIN
   DELETE FROM follower 
