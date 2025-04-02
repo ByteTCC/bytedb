@@ -8,6 +8,7 @@
 | sp_adicionarTagsPost | Cria uma tag existente a um post | idPost, idTag | Sim |
 | sp_adicionarTags | Cria uma nova tag | tagName | Sim |
 | sp_darLike | Cria um novo like | idPost, idUser | Sim |
+| sp_seguirUsuario | Atribui um usuário como seguidor de outro usuário | id_perfil, id_seguidor | Sim |
 
 ### Procedures de modificação de registros no banco de dados (UPDATE):
 | Nome da procedure | Descrição | Dados de entrada | Completo/Funcionando? |
@@ -45,3 +46,4 @@
 | sp_removerUsuario | Remove um usuário, para admins | idUserRemover, idUserAdmin | Sim |
 | sp_removerPermissaoAdmin | Remove permissão de admin de um usuário | idUser | Sim |
 | sp_darPermissaoAdmin | Dá permissão de admin a um usuário | idUser | Sim |
+| sp_deixarSeguirUsuario | Remove um usuário como seguidor de outro usuário | id_perfil, id_seguidor | Sim |
