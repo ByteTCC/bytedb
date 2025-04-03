@@ -560,7 +560,7 @@ DELIMITER ;
 DELIMITER @@
 CREATE PROCEDURE sp_listarTags()
 BEGIN
-  SELECT id_tag, tag_name FROM tag;
+  SELECT id_tag, tagName FROM tag;
 END @@
 DELIMITER ;
 
