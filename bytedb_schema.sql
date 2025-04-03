@@ -142,8 +142,8 @@ CREATE PROCEDURE sp_CriarUsuario(
   IN password__ VARCHAR(300)
 )
 BEGIN
-  INSERT INTO tb_user (userName, email, password_)
-  VALUES (username, email_, password__);
+  INSERT INTO tb_user (userName, email, password_, isAdmin)
+  VALUES (username, email_, password__, 0);
 END @@
 DELIMITER ;
 -- exemplo
