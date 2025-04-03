@@ -120,6 +120,19 @@ BEGIN
 END @@
 DELIMITER ;
 
+-- mostrar usuários da lista de seguidores de um usuário:
+DELIMITER @@
+CREATE PROCEDURE sp_mostrarSeguidoresUsuario(
+  IN id_usuario INT UNSIGNED
+)
+BEGIN
+  SELECT username, userPhoto, profileImg, vocation, bio, (SELECT COUNT(*) FROM follower WHERE fk_user_perfil = tb_user.idUser)
+  FROM tb_user
+  WHERE idUser = (SELECT fk_user_seguidor FROM follower WHERE fk_user_perfil = tb_user.idUser)
+  ORDER BY idUser;
+END @@
+DELIMITER ;
+
 -- criação de usuário
 DELIMITER @@
 CREATE PROCEDURE sp_CriarUsuario(

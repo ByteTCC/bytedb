@@ -34,6 +34,7 @@
 | sp_obterPostPorId | retorna um post com base em seu id, retorando o id do usuário que postou, o username, a foto do usuário, a foto do post, o titulo, o texto, a descrição, o código, o número de likes e o número de comentários | idPost | Sim |
 | sp_obterComentariosPorIdPostLimit | Retorna uma lista de comentários com base em seu idPost, limitando os resultados | idPost, limit_ | Sim mas falta testar |
 | sp_listarPostPesquisa | Pesquisa mostrando 100 primeiros caracteres, considerando titulo, descrição ou texto do post, mostrando tags | pesquisa(1000) | Não (testando)
+| sp_mostrarSeguidoresUsuario | mostra lista de usuários seguidores de um determinado usuário | id_usuario | Não (testes) |
 
 ### Procedures de exclusão de registros no banco de dados (DELETE):
 | Nome da procedure | Descrição | Dados de entrada | Completo/Funcionando? |
