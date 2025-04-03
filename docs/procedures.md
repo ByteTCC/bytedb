@@ -4,7 +4,7 @@
 | Nome da procedure | Descrição | Dados de entrada | Completo/Funcionando? |
 | ----------------- | --------- | ---------------- | --------------------- |
 | sp_CriarUsuario | Cria um novo usuário | username, email, password_ | Sim |
-| sp_adicionarPost | Cria um novo post | titile, text_, photo, description_, code, idUser | Sim |
+| sp_adicionarPost | Cria um novo post | title, text_, photo, description_, code, idUser | Sim |
 | sp_adicionarTagsPost | Cria uma tag existente a um post | idPost, idTag | Sim |
 | sp_adicionarTags | Cria uma nova tag | tagName | Sim |
 | sp_darLike | Cria um novo like | idPost, idUser | Sim |
