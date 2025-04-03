@@ -472,7 +472,7 @@ DELIMITER @@
 CREATE PROCEDURE sp_listarUsuarios()
 BEGIN
   SELECT username, userPhoto, profileImg, vocation, bio, (SELECT COUNT(*) FROM follower WHERE fk_user_perfil = tb_user.idUser) AS followers
-  FROM tb_user ORDER BY idUser;
+  FROM tb_user ORDER BY idUser ASC;
 END @@
 DELIMITER ;
 
@@ -481,7 +481,7 @@ DELIMITER @@
 CREATE PROCEDURE sp_listarUsuariosLimit(IN limit_ INT UNSIGNED)
 BEGIN
     SELECT username, userPhoto, profileImg, vocation, bio, (SELECT COUNT(*) FROM follower WHERE fk_user_perfil = tb_user.idUser) AS followers
-     FROM tb_user ORDER BY idUser LIMIT limit_;
+     FROM tb_user ORDER BY idUser ASC LIMIT limit_;
 END @@
 DELIMITER ;
 
