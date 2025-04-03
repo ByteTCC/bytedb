@@ -211,7 +211,7 @@ CREATE PROCEDURE sp_adicionarTagsPost(
   IN idTag INT UNSIGNED
 )
 BEGIN
-  INSERT INTO post_tag (fk_post_tag, fk_tagName)
+  INSERT INTO post_tag (fk_id_post, fk_tagName)
   VALUES (idPost, idTag);
 END @@
 DELIMITER ;
