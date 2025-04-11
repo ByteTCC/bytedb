@@ -372,7 +372,7 @@ CREATE PROCEDURE sp_listarPostPesquisa(IN pesquisa VARCHAR(1000))
 BEGIN
 SELECT 
     p.postTitle AS titulo, 
-    SUBSTRING(p.postText, 1, 100) AS resumo, 
+    SUBSTRING(p.postText, 1, 300) AS resumo, 
     u.userName AS nome_usuario, 
     u.idUser AS id_usuario, 
     u.userPhoto AS foto_usuario, 
