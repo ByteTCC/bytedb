@@ -514,6 +514,14 @@ BEGIN
     DELETE FROM comentarios
     WHERE fk_idUser = idUserRemover;
 
+    -- remover seguidas
+    DELETE FROM follower
+    WHERE fk_user_seguidor = idUserRemover;
+
+    -- remover likes
+    DELETE FROM likes
+    WHERE fk_idUser = idUserRemover;
+
     -- por fim deletar o usuário
     DELETE FROM tb_user
     WHERE idUser = idUserRemover;
