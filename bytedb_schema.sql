@@ -494,6 +494,35 @@ BEGIN
 END @@
 DELIMITER ;
 
+-- apagar conta, reservado aos usuários
+DELIMITER @@
+CREATE PROCEDURE sp_apagarConta(
+  IN idUser INT UNSIGNED,
+)
+BEGIN
+  -- deletar os likes:
+  DELETE FROM likes
+  WHERE fk_idUser = idUser;
+
+  -- deletar os posts
+  DELETE FROM post
+  WHERE fk_idUser = idUser;
+
+  -- deletar os comentários:
+  DELETE FROM comentarios
+  WHERE fk_idUser = idUser;
+
+  -- remover seguidas
+  DELETE FROM follower
+  WHERE fk_user_seguidor = idUser;
+
+  -- por fim deletar o usuário
+  DELETE FROM tb_user
+  WHERE idUser = idUser;
+
+END @@
+DELIMITER ;
+
 -- remover usuário, seus posts, seus comentários e seus likes (apenas admins podem):
 DELIMITER @@
 CREATE PROCEDURE sp_removerUsuario(
@@ -517,10 +546,6 @@ BEGIN
     -- remover seguidas
     DELETE FROM follower
     WHERE fk_user_seguidor = idUserRemover;
-
-    -- remover likes
-    DELETE FROM likes
-    WHERE fk_idUser = idUserRemover;
 
     -- por fim deletar o usuário
     DELETE FROM tb_user

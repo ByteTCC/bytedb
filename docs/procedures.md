@@ -48,3 +48,4 @@
 | sp_removerPermissaoAdmin | Remove permissão de admin de um usuário | idUser | Sim |
 | sp_darPermissaoAdmin | Dá permissão de admin a um usuário | idUser | Sim |
 | sp_deixarSeguirUsuario | Remove um usuário como seguidor de outro usuário | id_perfil, id_seguidor | Sim |
+| sp_apagarConta | Apaga a conta, todos posts, likes, lista de contas seguidas e comentários, reservado ao usuário | idUser | Sim |
