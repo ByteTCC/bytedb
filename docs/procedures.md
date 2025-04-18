@@ -4,7 +4,7 @@
 | Nome da procedure | Descrição | Dados de entrada | Completo/Funcionando? |
 | ----------------- | --------- | ---------------- | --------------------- |
 | sp_CriarUsuario | Cria um novo usuário | username, email, password_ | Sim |
-| sp_adicionarPost | Cria um novo post | title, text_, photo, description_, code, idUser | Sim |
+| sp_adicionarPost | Cria um novo post | title, text_, photo, description_, idUser | Sim |
 | sp_adicionarTagsPost | Cria uma tag existente a um post | idPost, idTag | Sim |
 | sp_adicionarTags | Cria uma nova tag | tagName | Sim |
 | sp_darLike | Cria um novo like | idPost, idUser | Sim |
@@ -16,8 +16,8 @@
 | sp_mudarFotoPerfil | Modifica a foto de perfil de um usuário (banner) | id, foto_perfil | Sim |
 | sp_mudarFotoUsuario | Modifica a foto de perfil de um usuário | id, userPhoto_ | Sim |
 | sp_mudarBio | Modifica a bio de um usuário | id, bio_ | Sim |
-| sp_editarPost | Edita um post | idPost, title, text_, photo, description_, code, idUser | Sim |
-| sp_editarComentario | Edita um comentário | idComentario, text_, photo_, code, idUser | Sim |
+| sp_editarPost | Edita um post | idPost, title, text_, photo, description_, idUser | Sim |
+| sp_editarComentario | Edita um comentário | idComentario, text_, photo_, idUser | Sim |
 
 ### Procedures de consulta de registros no banco de dados (SELECT):
 | Nome da procedure | Descrição | Dados de entrada | Completo/Funcionando? |
