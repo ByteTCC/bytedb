@@ -65,3 +65,11 @@ Tabela de comentários da rede social byte
 | fk_id_post | INT UNSIGNED | Chave estrangeira para a tabela post | Não |
 | textComent | varchar(300) | Texto do comentário | Não |
 | imageComent | varchar(300) | Imagem do comentário | Sim |
+
+### comentarios_like
+Tabela de likes dos comentários
+| Coluna | Tipo | Descrição | Pode ser nulo? |
+| ------ | ---- | --------- | -------------- |
+| idLike | INT UNSIGNED | chave primária | Não |
+| fk_likeComment | INT UNSIGNED | chave estrangeira para o id do comentário | Não |
+| fk_idUser | INT UNSIGNED | Chave estrangeira para o id do usuário que deu like | Não |

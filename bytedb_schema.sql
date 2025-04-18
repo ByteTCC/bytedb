@@ -61,7 +61,6 @@ CREATE TABLE IF NOT EXISTS likes (
   idLike INT UNSIGNED NOT NULL AUTO_INCREMENT,
   fk_likePost INT UNSIGNED NOT NULL,
   fk_idUser INT UNSIGNED NOT NULL,
---  quantLikeComent INT UNSIGNED NOT NULL, -- esse campo foi removido pois a quantidade de like irá ser calculada no próprio SELECT DO SQL com o COUNT ou semelhante.
   PRIMARY KEY (idLike),
   FOREIGN KEY (fk_likePost) REFERENCES post(id_post),
   FOREIGN KEY (fk_idUser) REFERENCES tb_user(idUser)
@@ -80,6 +79,15 @@ CREATE TABLE IF NOT EXISTS comentarios (
   FOREIGN KEY (fk_id_post) REFERENCES post(id_post),
   FOREIGN KEY (fk_idUser) REFERENCES tb_user(idUser)
 );
+
+CREATE TABLE IF NOT EXISTS comentarios_like (
+  idLike INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  fk_likeComment INT UNSIGNED NOT NULL,
+  fk_idUser INT UNSIGNED NOT NULL,
+  PRIMARY KEY (idLike),
+  FOREIGN KEY (fk_likeComment) REFERENCES comentarios(id_comentario),
+  FOREIGN KEY (fk_idUser) REFERENCES tb_user(idUser)
+)
 
 CREATE TABLE IF NOT EXISTS follower (
   idSeguidor int UNSIGNED NOT NULL AUTO_INCREMENT,
