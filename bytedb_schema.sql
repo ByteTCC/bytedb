@@ -23,10 +23,9 @@ CREATE TABLE IF NOT EXISTS tb_user (
 CREATE TABLE IF NOT EXISTS post (
   id_post INT UNSIGNED NOT NULL AUTO_INCREMENT,
   postTitle varchar(300) NOT NULL,
-  postText varchar(3000) NOT NULL,
+  postText varchar(5000) NOT NULL,
   postPhoto varchar(300),
   postDescription varchar(512) NOT NULL,
-  postCode varchar(3000) NOT NULL,
   fk_idUser INT UNSIGNED not null,
   postDateTime DATETIME,
   FOREIGN KEY (fk_idUser) REFERENCES tb_user(idUser),
@@ -77,7 +76,6 @@ CREATE TABLE IF NOT EXISTS comentarios (
   fk_id_post INT UNSIGNED NOT NULL,
   textComent varchar(3000) NOT NULL,
   imageComent varchar(300),
-  codeComent varchar(3000) NOT NULL,
   PRIMARY KEY (id_comentario),
   FOREIGN KEY (fk_id_post) REFERENCES post(id_post),
   FOREIGN KEY (fk_idUser) REFERENCES tb_user(idUser)
@@ -195,12 +193,11 @@ CREATE PROCEDURE sp_adicionarPost(
   IN text_ VARCHAR(3000),
   IN photo VARCHAR(300),
   IN description_ VARCHAR(500),
-  IN code VARCHAR(3000),
   IN idUser INT UNSIGNED
 )
 BEGIN
-  INSERT INTO post (postTitle, postText, postPhoto, postDescription, postCode, fk_idUser, postDateTime)
-  VALUES (title, text_, photo, description_, code, idUser, NOW());
+  INSERT INTO post (postTitle, postText, postPhoto, postDescription, fk_idUser, postDateTime)
+  VALUES (title, text_, photo, description_, idUser, NOW());
 END @@
 DELIMITER ;
 
@@ -313,12 +310,11 @@ CREATE PROCEDURE sp_editarPost(
   IN text_ VARCHAR(300),
   IN photo VARCHAR(300),
   IN description_ VARCHAR(300),
-  IN code VARCHAR(300),
   IN idUser INT UNSIGNED
 )
 BEGIN
   UPDATE post
-  SET postTitle = title, postText = text_, postPhoto = photo, postDescription = description_, postCode = code
+  SET postTitle = title, postText = text_, postPhoto = photo, postDescription = description_
   WHERE id_post = idPost AND fk_idUser = idUser;
 END @@
 DELIMITER ;
@@ -329,12 +325,11 @@ CREATE PROCEDURE sp_editarComentario(
   IN idComentario INT UNSIGNED,
   IN text_ VARCHAR(300),
   IN photo VARCHAR(300),
-  IN code VARCHAR(300),
   IN idUser INT UNSIGNED
 )
 BEGIN
   UPDATE comentarios
-  SET textComent = text_, imageComent = photo, codeComent = code
+  SET textComent = text_, imageComent = photo
   WHERE id_comentario = idComentario AND fk_idUser = idUser;
 END @@
 DELIMITER ;
@@ -350,21 +345,6 @@ BEGIN
   WHERE fk_likePost = idPost;
 END @@
 DELIMITER ;
-
--- listar posts COM TAGS de acordo com pesquisa de titulo, descrição ou código:
--- DELIMITER @@
--- CREATE PROCEDURE sp_listarPostsPorPesquisa(
---   IN pesquisa VARCHAR(1000)
--- )
--- BEGIN
---   SELECT post.postTitle, post.postTitle, post.postText, post.postPhoto, post.postDescription, post.postDateTime, tb_user.userName, tb_user.userPhoto, tb_user.vocation
---   FROM post
---   INNER JOIN tb_user ON post.fk_idUser = tb_user.idUser
---   WHERE post.postTitle LIKE CONCAT('%', pesquisa, '%') OR post.postDescription LIKE CONCAT('%', pesquisa, '%') OR post.postCode LIKE CONCAT('%', pesquisa, '%')
---   ORDER BY post.postDateTime;
--- END @@
--- DELIMITER ;
-
 
 -- listas posts com tags considerando conteudo do titulo, descrição ou texto do post
 DELIMITER @@
@@ -615,7 +595,6 @@ BEGIN
     p.postText AS postText,
     p.postPhoto AS postPhoto,
     p.postDescription AS postDescription,
-    p.postCode AS postCode,
     u.idUser AS idUser,
     u.userName AS userName,
     u.userPhoto AS userPhoto,
@@ -635,7 +614,6 @@ BEGIN
     c.id_comentario AS id_comentario,
     c.textComent AS textComent,
     c.imageComent AS imageComent,
-    c.codeComent AS codeComent,
     u.idUser AS idUser,
     u.userName AS userName,
     u.userPhoto AS userPhoto
@@ -653,7 +631,6 @@ BEGIN
     c.id_comentario AS id_comentario,
     c.textComent AS textComent,
     c.imageComent AS imageComent,
-    c.codeComent AS codeComent,
     u.idUser AS idUser,
     u.userName AS userName,
     u.userPhoto AS userPhoto
