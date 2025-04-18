@@ -496,6 +496,10 @@ BEGIN
   DELETE FROM post
   WHERE fk_idUser = idUser;
 
+  -- deletar os likes dos comentários:
+  DELETE FROM comentarios_like
+  WHERE fk_idUser = idUserRemover;
+
   -- deletar os comentários:
   DELETE FROM comentarios
   WHERE fk_idUser = idUser;
@@ -525,6 +529,10 @@ BEGIN
 
     -- deletar os posts
     DELETE FROM post
+    WHERE fk_idUser = idUserRemover;
+
+    -- deletar os likes dos comentários:
+    DELETE FROM comentarios_like
     WHERE fk_idUser = idUserRemover;
 
     -- deletar os comentários:
