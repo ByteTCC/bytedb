@@ -5,6 +5,7 @@ CREATE DATABASE IF NOT EXISTS bd_Byte;
 
 USE bd_Byte;
 
+
 -- mudei "password" pra "password_" com underline já que "password" é palavra reservada
 -- adicionei o "isAdmin" pra diferenciar se o usuário é ou não administrador
 CREATE TABLE IF NOT EXISTS tb_user (
